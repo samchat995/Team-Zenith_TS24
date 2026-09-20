@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="AI-Based Cognitive Gaming and Memory Assistance Platform for Elderly Dementia Patients in North Eastern Region (NER).">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Neural Nexus">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>NEURAL NEXUS — Patient Cognitive App</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      background-color: #0F172A;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #loading-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #FFFFFF;
+      background: #0F172A;
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 5px solid rgba(255, 255, 255, 0.15);
+      border-top-color: #38BDF8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-indicator">
+    <div class="spinner"></div>
+    <p style="margin-top: 16px; font-weight: 700; color: #38BDF8; font-family: system-ui, sans-serif;">Loading Neural Nexus...</p>
+  </div>
+
+  <script>
+    function dismissLoader() {
+      const loader = document.getElementById('loading-indicator');
+      if (loader && loader.style.display !== 'none') {
+        loader.style.transition = 'opacity 0.3s ease-out';
+        loader.style.opacity = '0';
+        setTimeout(function() {
+          if (loader.parentNode) loader.parentNode.removeChild(loader);
+        }, 320);
+      }
+    }
+
+    // 1. MutationObserver watching for any flutter view or canvas element
+    const observer = new MutationObserver(function() {
+      if (document.querySelector('flutter-view') || 
+          document.querySelector('flt-glass-pane') || 
+          document.querySelector('canvas') ||
+          document.querySelector('flt-scene-host')) {
+        dismissLoader();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // 2. Flutter first-frame event listener
+    window.addEventListener('flutter-first-frame', dismissLoader);
+
+    // 3. Fast fallback interval
+    let attempts = 0;
+    const interval = setInterval(function() {
+      attempts++;
+      if (document.querySelector('flutter-view') || 
+          document.querySelector('flt-glass-pane') || 
+          document.querySelector('canvas')) {
+        dismissLoader();
+        clearInterval(interval);
+      } else if (attempts > 30) {
+        dismissLoader();
+        clearInterval(interval);
+      }
+    }, 100);
+
+    // 4. Absolute hard timeout: after 2800ms, dismiss loader unconditionally
+    setTimeout(dismissLoader, 2800);
+
+    // 5. Error listener: never trap user behind spinner if an error occurs
+    window.addEventListener('error', function() {
+      setTimeout(dismissLoader, 500);
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

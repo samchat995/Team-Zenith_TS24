@@ -1,0 +1,2250 @@
+<USER_REQUEST>
+# NEURAL NEXUS — FINAL MASTER IMPLEMENTATION PROMPT
+
+## Fix All 7 Problems + Implement New User Assessment + Verify Real Android APK
+
+You are working on my **existing NEURAL NEXUS project**.
+
+Project:
+
+**NEURAL NEXUS — Adaptive Cognitive Games + Memory Assistance Platform**
+
+Project root:
+
+```text
+C:\Users\Avay\OneDrive\Desktop\Ritasri app
+```
+
+Existing structure:
+
+```text
+adaptive_engine/
+backend/
+mobile/
+web/
+```
+
+The Flutter mobile application is inside:
+
+```text
+mobile/
+```
+
+The FastAPI backend is inside:
+
+```text
+backend/
+```
+
+The React caregiver/healthcare/admin dashboard is inside:
+
+```text
+web/
+```
+
+---
+
+# 🚨 CRITICAL RULE — DO NOT REBUILD THE PROJECT
+
+This is an **existing working project**.
+
+You must modify and improve the existing implementation.
+
+### DO NOT:
+
+* rebuild the app from scratch
+* remove existing features
+* replace real functionality with mockups
+* hardcode new user data
+* hardcode caregiver data
+* hardcode progress
+* hardcode XP
+* break existing APIs
+* remove existing games
+* remove NIA
+* remove offline functionality
+* change the existing NEURAL NEXUS theme
+* create a separate fake assessment application
+
+All changes must be **additive and backward compatible** wherever possible.
+
+Preserve all existing functionality.
+
+---
+
+# EXISTING FEATURES THAT MUST REMAIN WORKING
+
+Do not break:
+
+* 18 cognitive games
+* Patient profiles
+* Patient home
+* Progress tracking
+* Game sessions
+* Adaptive difficulty
+* Adaptive engine
+* Rewards
+* XP
+* Badges
+* Streaks
+* Achievements
+* Mood tracking
+* Reminders
+* Memory assistance
+* NIA assistant
+* Meaningful Activities
+* Caregiver dashboard
+* Healthcare portal
+* Admin dashboard
+* JWT/RBAC
+* Offline-first functionality
+* Local database
+* Sync queue
+* Existing backend APIs
+* Existing demo accounts
+* Existing multilingual support
+* Existing Android application
+* Existing web application
+
+If something already works, **do not rewrite it unnecessarily**.
+
+---
+
+# THE 7 PROBLEMS TO FIX
+
+Implement all seven problems below.
+
+---
+
+# PROBLEM 1 — LANGUAGE SELECTOR / HEADER OVERFLOW
+
+The current Flutter app has a yellow/black Flutter overflow warning in the header.
+
+Example:
+
+```text
+OVERFLOWED BY 5.5...
+```
+
+The language selector containing:
+
+* English
+* हिन्दी
+* অসমীয়া
+
+does not fit properly on some screen sizes.
+
+## Required solution
+
+Make the header fully responsive.
+
+It must work on:
+
+* small Android phones
+* normal Android phones
+* larger phones
+* Flutter Web
+* portrait mode
+* different text lengths
+* English
+* Hindi
+* Assamese
+
+Use appropriate responsive Flutter layouts such as:
+
+* Flexible
+* Expanded
+* Wrap
+* SingleChildScrollView
+* responsive sizing
+* adaptive spacing
+
+Do not simply:
+
+* hide languages
+* remove languages
+* make text unreadably small
+* suppress the overflow warning
+
+The actual layout must be fixed.
+
+### Acceptance condition
+
+There must be:
+
+* no yellow/black overflow warning
+* no clipped language button
+* no overlapping controls
+* no inaccessible language option
+
+Test all three languages.
+
+---
+
+# PROBLEM 2 — VOICE GUIDANCE / SPOKEN FEEDBACK
+
+## VERY IMPORTANT CHANGE
+
+The app should **NOT require the user to speak commands to control the application**.
+
+Do NOT implement general voice navigation such as:
+
+> "Open Games"
+
+> "Go Home"
+
+> "Next"
+
+> "Yes"
+
+as the primary navigation mechanism.
+
+Instead:
+
+# USER TAPS → APP SPEAKS
+
+The user interacts with the application normally by tapping.
+
+The app uses Text-to-Speech to tell the user what they selected or what is happening.
+
+This is especially important for elderly users and users with visual difficulty.
+
+---
+
+## Example
+
+User taps:
+
+**Games**
+
+App says:
+
+> "Games. You have 18 cognitive games available."
+
+User taps:
+
+**Progress**
+
+App says:
+
+> "Progress. Your current progress is 75 percent."
+
+User taps:
+
+**Memory Match**
+
+App says:
+
+> "Memory Match selected. This game helps you practice memory."
+
+User taps:
+
+**Yes**
+
+App says:
+
+> "You selected Yes."
+
+User taps:
+
+**No**
+
+App says:
+
+> "You selected No."
+
+User taps:
+
+**Next**
+
+App says:
+
+> "Moving to Question 3 of 10."
+
+User taps:
+
+**Play**
+
+App says:
+
+> "Playing the story."
+
+User taps:
+
+**Pause**
+
+App says:
+
+> "Story paused."
+
+---
+
+# VOICE GUIDANCE MUST WORK THROUGHOUT THE APP
+
+Provide spoken feedback/guidance for important UI elements in:
+
+* Login
+* Create Account
+* Home
+* Profile
+* All 18 games
+* Game instructions
+* Game options
+* Game results
+* Initial onboarding
+* 10-question assessment
+* YES/NO assessment
+* Meaningful Activities
+* Rewards
+* XP
+* Badges
+* Streaks
+* Progress
+* Mood
+* Memory
+* Reminders
+* NIA
+* Settings
+* Language selection
+* Navigation
+
+---
+
+# SCREEN OPENING GUIDANCE
+
+When a screen opens, the app can read the important information once.
+
+Example:
+
+> "Home page. Welcome, Anima. Your progress is 75 percent. You have 120 XP."
+
+Do NOT continuously read every element.
+
+Voice should be helpful, not overwhelming.
+
+---
+
+# TAP FEEDBACK
+
+Important interactive elements should have accessible spoken labels.
+
+When the user taps something:
+
+1. Perform the normal action.
+2. Speak a short description of what happened.
+3. Continue normally.
+
+Example:
+
+```text
+User taps Memory Match
+
+App:
+"Memory Match selected.
+This game helps you practice remembering matching pairs.
+Tap Start to begin."
+```
+
+---
+
+# SPEECH-TO-TEXT
+
+Do NOT make Speech-to-Text mandatory for general navigation.
+
+The main interaction model is:
+
+```text
+USER TAPS
+   ↓
+APP PERFORMS ACTION
+   ↓
+APP SPEAKS FEEDBACK
+```
+
+Speech-to-text can remain available for appropriate existing features such as NIA if already implemented.
+
+Do not remove existing NIA voice functionality.
+
+---
+
+# TEXT-TO-SPEECH
+
+Use TTS for:
+
+* screen titles
+* important instructions
+* stories
+* questions
+* answer options
+* button feedback
+* game instructions
+* game results
+* progress
+* rewards
+* important notifications
+
+Use the currently selected language:
+
+* English
+* Hindi
+* Assamese
+
+Where supported by the Android TTS engine.
+
+If TTS is unavailable, the application must continue working normally with touch and visual UI.
+
+---
+
+# ANDROID VOICE REQUIREMENT
+
+This must work in the **actual Android APK**.
+
+Verify:
+
+* Android TTS
+* language switching
+* audio playback
+* spoken feedback
+* story reading
+* question reading
+* answer feedback
+* no crash if TTS is unavailable
+
+Do not implement a Web-only solution.
+
+---
+
+# PROBLEM 3 — PROGRESS IS FIXED
+
+Currently progress does not properly increase after completing games.
+
+For example:
+
+```text
+2/4 = 48%
+```
+
+may remain unchanged after another game is completed.
+
+This must become completely data-driven.
+
+---
+
+# REQUIRED GAME COMPLETION FLOW
+
+When a game is completed:
+
+```text
+Game Completed
+      ↓
+Create GameSession
+      ↓
+Save Performance Data
+      ↓
+Update Completed Count
+      ↓
+Recalculate Progress
+      ↓
+Update XP / Rewards
+      ↓
+Update Streak
+      ↓
+Send Data To Adaptive Engine
+      ↓
+Generate/Update Recommendation
+      ↓
+Refresh Home
+      ↓
+Refresh Progress
+      ↓
+Refresh Caregiver Dashboard
+```
+
+Example:
+
+```text
+2/4 → 3/4 → 4/4
+```
+
+Progress must be calculated from actual stored data.
+
+DO NOT hardcode:
+
+```text
+48%
+```
+
+or another fixed number.
+
+---
+
+# PROGRESS MUST PERSIST
+
+Verify persistence after:
+
+* app restart
+* logout/login
+* offline use
+* synchronization
+* Android APK use
+
+If a game is completed offline:
+
+```text
+Game Completion
+↓
+Local Database
+↓
+Sync Queue
+↓
+Backend
+↓
+Database
+↓
+Caregiver Dashboard
+```
+
+Prevent duplicate GameSession creation.
+
+---
+
+# PROBLEM 4 — XP / REWARD IS FIXED
+
+Currently reward points/XP do not properly increase after earning rewards.
+
+Make gamification completely data-driven.
+
+---
+
+# REQUIRED GAMIFICATION FLOW
+
+```text
+Game/Activity Completed
+        ↓
+Calculate Reward
+        ↓
+Add XP
+        ↓
+Persist XP
+        ↓
+Recalculate Level
+        ↓
+Check Badges
+        ↓
+Update Streak
+        ↓
+Update Achievements
+        ↓
+Refresh Rewards
+        ↓
+Refresh Home
+```
+
+XP must NOT be hardcoded.
+
+The state must survive:
+
+* refresh
+* app restart
+* logout/login
+* offline mode
+* synchronization
+
+---
+
+# PREVENT DUPLICATE XP
+
+Do not award the same reward multiple times because of:
+
+* refreshing
+* reopening result screen
+* repeated API requests
+* duplicate sync
+* reopening the game
+
+Use unique session/completion identifiers where appropriate.
+
+---
+
+# IMPORTANT
+
+Keep:
+
+**Cognitive difficulty**
+
+separate from:
+
+**Gamification level**
+
+A higher XP level must not automatically mean the cognitive game difficulty increases.
+
+---
+
+# PROBLEM 5 — NEW LOGIN / REGISTRATION SYSTEM
+
+Replace the current account-selection/PIN-style login with real user-created accounts.
+
+---
+
+# PATIENT LOGIN
+
+The patient should enter:
+
+* Username/name
+* Password
+
+Do NOT show a list of predefined patients for the user to select.
+
+Authentication must be database-backed.
+
+Do NOT use frontend hardcoded checks such as:
+
+```text
+if username == ...
+if password == ...
+```
+
+Use the existing backend authentication architecture.
+
+---
+
+# CREATE ACCOUNT
+
+Provide:
+
+**Create New Account**
+
+The user enters their own account information.
+
+The account must be stored in the backend/database.
+
+Password handling must use the existing secure authentication architecture.
+
+---
+
+# ROLE SEPARATION
+
+Maintain:
+
+* Patient
+* Caregiver
+* Healthcare Worker
+* Admin
+
+Routing:
+
+```text
+Patient
+↓
+Patient Dashboard
+```
+
+```text
+Caregiver
+↓
+Caregiver Dashboard
+```
+
+```text
+Healthcare Worker
+↓
+Healthcare Portal
+```
+
+```text
+Admin
+↓
+Admin Console
+```
+
+Use real RBAC.
+
+Do not allow unauthorized dashboard access.
+
+---
+
+# PROBLEM 6 — CAREGIVER LOGIN IS STATIC
+
+The caregiver system must become completely dynamic.
+
+---
+
+# CAREGIVER ACCOUNTS
+
+Different caregivers must be able to have different:
+
+* usernames
+* passwords
+* names
+* profiles
+* permissions
+* assigned patients
+
+Do not hardcode:
+
+```text
+Ananya Sharma
+```
+
+as the only caregiver.
+
+A demo caregiver can remain, but it must behave exactly like a normal database-backed caregiver account.
+
+---
+
+# CAREGIVER AUTHENTICATION
+
+Use:
+
+* backend authentication
+* secure password handling
+* JWT/session
+* RBAC
+* logout
+
+Logout must clear the local authentication/session state.
+
+---
+
+# DYNAMIC PATIENT ASSIGNMENT
+
+Caregiver A should see:
+
+```text
+Caregiver A's assigned patients
+```
+
+Caregiver B should see:
+
+```text
+Caregiver B's assigned patients
+```
+
+Do not always display:
+
+* Ifra
+* Taiba
+
+for every caregiver.
+
+---
+
+# DYNAMIC CAREGIVER DASHBOARD
+
+Load data for the authenticated caregiver.
+
+Display real:
+
+* assigned patients
+* patient profiles
+* progress
+* completed games
+* performance
+* mood
+* reminders
+* memory information
+* notes
+* tasks
+* recommendations
+* assessments
+* trends
+* relevant alerts
+
+Every caregiver action must be associated with:
+
+* correct caregiver
+* correct patient
+
+---
+
+# PROBLEM 7 — NEW ACCOUNT → 10 QUESTIONS → CAREGIVER → HOME
+
+This is the complete new-user onboarding flow.
+
+When a new patient creates an account:
+
+```text
+Create Account
+      ↓
+Account Saved
+      ↓
+Automatically Open Initial 10-Question Assessment
+      ↓
+Question 1
+      ↓
+Question 2
+      ↓
+...
+      ↓
+Question 10
+      ↓
+Save Responses
+      ↓
+Thank You Popup
+      ↓
+Make Responses Available To Caregiver
+      ↓
+Open Patient Home
+```
+
+The patient should NOT have to manually search for the assessment after creating the account.
+
+---
+
+# QUESTION TEMPLATE PROVIDED IN THIS CHAT
+
+I am providing:
+
+1. The complete written content of all 10 questions in this chat.
+2. A reference screenshot/image showing the exact assessment layout I want.
+
+The **written content is the source of truth for the questions**.
+
+The **provided screenshot/image is the source of truth for the overall assessment layout/template**.
+
+Use both.
+
+Do not replace them with generic content.
+
+---
+
+# IMPORTANT THEME RULE
+
+The screenshot is a **template/reference for the assessment layout**.
+
+DO NOT change the existing **NEURAL NEXUS application theme**.
+
+Keep the existing:
+
+* colors
+* typography
+* branding
+* buttons
+* cards
+* icons
+* spacing
+* navigation style
+* visual identity
+
+Adapt the supplied question template into the existing NEURAL NEXUS theme.
+
+Do NOT make the entire application look like the screenshot.
+
+Only the assessment structure should follow the reference.
+
+---
+
+# 10-QUESTION ASSESSMENT
+
+## QUESTION 1
+
+Character:
+
+**Anima, 67, Jorhat, Assam**
+
+Story:
+
+“Anima is preparing for Bihu and her daughter told her that the family would visit on Sunday. She wrote the date down. A few hours later, she asked her husband again when everyone was coming. The next morning, she asked the same question once more.”
+
+Question:
+
+“Like Anima, has this ever happened to you – when you forget something someone told you recently and had to ask about it again?”
+
+Location badge:
+
+**Jorhat, Assam**
+
+Visual reference:
+
+Use a warm photograph of an elderly Assamese woman in a natural home setting, preferably wearing traditional Assamese clothing.
+
+---
+
+## QUESTION 2
+
+Character:
+
+**Ato, 72, Kohima, Nagaland**
+
+Story:
+
+“Ato went to the market to buy things for a family gathering. There were many items to remember and different prices to calculate. He found it difficult to keep track of everything and his son had to help him.”
+
+Question:
+
+“When you go shopping or have several things to arrange, does this sometimes happen to you too?”
+
+Location badge:
+
+**Kohima, Nagaland**
+
+Visual reference:
+
+Use an elderly Naga man at a local market in Kohima.
+
+---
+
+## QUESTION 3
+
+Character:
+
+**Meban, 69, Shillong, Meghalaya**
+
+Story:
+
+“Meban usually walks to the same market every Saturday. One day, he took a familiar road but suddenly became unsure where it led. At home, he also struggled with an appliance he had used many times before.”
+
+Question:
+
+“Like Meban, have you ever found yourself unsure about how to do something that you usually do without any problem?”
+
+Location badge:
+
+**Shillong, Meghalaya**
+
+Visual reference:
+
+Use an elderly Khasi/Meghalaya man with a natural Shillong background.
+
+---
+
+## QUESTION 4
+
+Character:
+
+**Thangjam, 75, Imphal, Manipur**
+
+Story:
+
+“Thangjam’s family was preparing for a celebration. One morning, he asked his wife when it would happen, even though it was that very day. Later, he also became confused about which day of the week it was.”
+
+Question:
+
+“Like Thangjam, have you ever had a moment when you were unsure about what day it was or why you had gone somewhere?”
+
+Location badge:
+
+**Imphal, Manipur**
+
+Visual reference:
+
+Use an elderly Manipuri man in a natural home/community setting.
+
+---
+
+## QUESTION 5
+
+Character:
+
+**Lalhmingi, 64, Aizawl, Mizoram**
+
+Story:
+
+“Lalhmingi enjoys walking around the hilly streets near her home. Recently, she sometimes misjudges a step and finds it harder to judge how far away things are. Reading small writing on shop signs has also become difficult.”
+
+Question:
+
+“Like Lalhmingi, have you ever misjudged a step or distance while walking, or found it harder to see things clearly?”
+
+Location badge:
+
+**Aizawl, Mizoram**
+
+Visual reference:
+
+Use an elderly Mizo woman with an Aizawl hillside background.
+
+---
+
+## QUESTION 6
+
+Character:
+
+**Bimal, 70, Agartala, Tripura**
+
+Story:
+
+“Bimal enjoys talking with his neighbors about local news. Recently, he sometimes stops in the middle of a conversation because he cannot find the right word. Sometimes he describes familiar objects instead of saying their names.”
+
+Question:
+
+“When you are talking with your family or neighbors, have you also had moments like Bimal, where you know what you want to say but the word just doesn’t come to you?”
+
+Location badge:
+
+**Agartala, Tripura**
+
+Visual reference:
+
+Use an elderly Tripuri/Bengali elderly man in a natural Agartala neighborhood setting.
+
+---
+
+## QUESTION 7
+
+Character:
+
+**Tashi, 66, Itanagar, Arunachal Pradesh**
+
+Story:
+
+“Tashi normally keeps his spectacles, wallet and keys in the same places. One morning, he could not find his spectacles and could not remember where he had last used them. His wife eventually found them in an unusual place.”
+
+Question:
+
+“Like Tashi, have you also sometimes kept something somewhere unusual and then been unable to remember where you had put it?”
+
+Location badge:
+
+**Itanagar, Arunachal Pradesh**
+
+Visual reference:
+
+Use an elderly Arunachali man in a home or local market setting.
+
+---
+
+## QUESTION 8
+
+Character:
+
+**Dorjee, 73, Gangtok, Sikkim**
+
+Story:
+
+“Dorjee ran a small shop for many years and was always careful with money. Recently, he bought something without checking the price properly. Another day, he forgot to take care of an important household payment.”
+
+Question:
+
+“Like Dorjee, have you ever made a decision about money or an everyday matter and later wondered why you had made that choice?”
+
+Location badge:
+
+**Gangtok, Sikkim**
+
+Visual reference:
+
+Use an elderly Sikkimese man in a small local shop.
+
+---
+
+## QUESTION 9
+
+Character:
+
+**Jonali, 62, Dibrugarh, Assam**
+
+Story:
+
+“Jonali used to enjoy visiting neighbors and joining family gatherings. She especially looked forward to community celebrations and evening conversations. Recently, she often prefers to stay at home and sometimes skips gatherings she would normally enjoy.”
+
+Question:
+
+“Like Jonali, have you also found yourself staying home more often or skipping gatherings that you would normally enjoy?”
+
+Location badge:
+
+**Dibrugarh, Assam**
+
+Visual reference:
+
+Use an elderly Assamese woman in a warm home/community setting.
+
+---
+
+## QUESTION 10
+
+Character:
+
+**Neikha, 68, Dimapur, Nagaland**
+
+Story:
+
+“Neikha has always liked following the same morning routine. Recently, small changes to her routine sometimes make her unusually upset. She becomes worried or irritated when things do not happen as she expected.”
+
+Question:
+
+“Like Neikha, have you also noticed times when a small change in your usual routine makes you more upset or worried than it used to?”
+
+Location badge:
+
+**Dimapur, Nagaland**
+
+Visual reference:
+
+Use an elderly Naga woman in a warm home setting.
+
+---
+
+# ASSESSMENT UI TEMPLATE
+
+Follow the supplied screenshot's overall structure.
+
+The assessment should contain:
+
+### Profile/character section
+
+* Elderly person's image
+* Character name
+* Age
+* Location
+* Location badge
+
+### Story card
+
+Large readable story.
+
+### Audio section
+
+Show:
+
+**Listen to this story**
+
+Include:
+
+* Play
+* Pause
+* Progress
+* Duration
+* Volume
+
+### Language selector
+
+```text
+English
+हिन्दी
+অসমীয়া
+```
+
+### Question section
+
+Large readable question card.
+
+### Answer section
+
+Large elderly-friendly answer buttons.
+
+For the supplied assessment questions, use a clear:
+
+**YES / NO**
+
+answer interface.
+
+---
+
+# ASSESSMENT VOICE GUIDANCE
+
+Voice guidance is REQUIRED.
+
+However:
+
+## DO NOT use voice commands for navigation.
+
+The user does NOT need to say:
+
+* "Next"
+* "Yes"
+* "No"
+* "Go back"
+* "Read question"
+
+The user taps those buttons.
+
+The app simply tells the user what is happening.
+
+---
+
+# QUESTION VOICE FLOW
+
+When Question 1 opens:
+
+App says:
+
+> "Question 1 of 10."
+
+Then:
+
+> "I will now read the story."
+
+Read the story.
+
+Then:
+
+> "Now I will read the question."
+
+Read the question.
+
+Then:
+
+> "Please choose Yes or No."
+
+Then:
+
+> "Option 1: Yes."
+
+> "Option 2: No."
+
+The user taps one.
+
+If user taps Yes:
+
+> "You selected Yes."
+
+If user taps No:
+
+> "You selected No."
+
+When the user taps Next:
+
+> "Moving to Question 2 of 10."
+
+Repeat this process for all 10 questions.
+
+---
+
+# AUDIO CONTROLS
+
+If the user taps:
+
+### Play
+
+Say:
+
+> "Playing the story."
+
+### Pause
+
+Say:
+
+> "Story paused."
+
+### Replay
+
+Say:
+
+> "Playing again."
+
+Do not require spoken commands.
+
+---
+
+# SAVE EVERY RESPONSE
+
+Each response must contain at least:
+
+```text
+assessment_id
+patient_id
+question_id
+answer
+timestamp
+language
+```
+
+Do not store only the final score.
+
+Store the actual individual answers.
+
+---
+
+# OFFLINE ASSESSMENT
+
+The assessment must work offline where the existing architecture supports it.
+
+If offline:
+
+```text
+Question response
+↓
+Local database
+↓
+Sync queue
+↓
+Backend when internet returns
+```
+
+Never lose responses.
+
+Do not duplicate responses during synchronization.
+
+---
+
+# THANK-YOU POPUP
+
+After Question 10:
+
+Show a warm popup:
+
+```text
+Thank You
+
+Thank you for completing the assessment.
+
+Your responses have been saved and shared with your caregiver.
+
+Let's continue to your home page.
+```
+
+Then:
+
+1. Save final assessment.
+2. Mark assessment completed.
+3. Synchronize if internet is available.
+4. Make responses available to caregiver.
+5. Navigate automatically to Patient Home.
+
+Do NOT ask the user to manually navigate home.
+
+---
+
+# DO NOT REPEAT INITIAL ASSESSMENT
+
+After successful completion, save:
+
+```text
+initial_assessment_completed = true
+```
+
+On subsequent logins, do NOT automatically show the initial assessment again.
+
+Only show it if the existing application provides a legitimate review/retake mechanism.
+
+---
+
+# CAREGIVER MUST RECEIVE REAL RESPONSES
+
+The caregiver dashboard must show the actual assessment data.
+
+Caregiver should see:
+
+* Patient name
+* Assessment date
+* Completion status
+* All 10 questions
+* Actual patient answers
+* Language used
+* Timestamp
+
+Do NOT show only:
+
+```text
+Assessment Completed
+```
+
+The actual responses must be accessible.
+
+---
+
+# NO MEDICAL DIAGNOSIS
+
+The assessment is an onboarding/screening information collection feature.
+
+Do NOT say:
+
+* "You have dementia."
+* "You have Alzheimer's."
+* "You are diagnosed."
+
+Do not generate unsupported medical diagnoses.
+
+Use neutral terminology such as:
+
+* Assessment responses
+* Observations
+* Screening information
+* Caregiver review
+
+---
+
+# EXISTING 18 GAMES
+
+Do NOT remove or break these:
+
+1. Remember the Objects
+2. Memory Match
+3. Daily Routine Order
+4. Find Different Object
+5. Twin Shapes & Colors
+6. Pattern Completion
+7. Object Categorization
+8. Story Recall
+9. Emotion Recognition
+10. Face & Name Memory
+11. Location Memory
+12. Sound Memory
+13. Word Recall
+14. Object Recognition
+15. Sequence Recall
+16. Which One is Missing?
+17. Match Related Pairs
+18. Picture & Word Match
+
+Verify that game completion connects to the new dynamic progress and XP systems.
+
+---
+
+# NIA
+
+Do NOT break NIA.
+
+NIA must continue using real patient context where available, including:
+
+* patient name
+* progress
+* completed games
+* XP/rewards
+* activities
+* mood
+* reminders
+* memory
+* recommendations
+* assessment information
+
+Do not replace NIA with a static chatbot.
+
+NIA's existing voice functionality should remain intact.
+
+The new general voice feedback system is separate from NIA.
+
+---
+
+# OFFLINE-FIRST REQUIREMENT
+
+Preserve offline functionality.
+
+Offline functionality should continue to support, where applicable:
+
+* patient session
+* games
+* game completion
+* progress
+* XP
+* rewards
+* assessment
+* reminders
+* memory
+* activities
+* local data
+* sync queue
+
+When internet returns:
+
+```text
+Local Changes
+↓
+Sync Queue
+↓
+Backend
+↓
+Database
+↓
+Caregiver Dashboard
+```
+
+Do not create duplicate records.
+
+---
+
+# DATABASE
+
+Inspect the existing database architecture before changing it.
+
+Use existing models when appropriate.
+
+If required, add proper models/entities for:
+
+```text
+InitialAssessment
+InitialAssessmentResponse
+```
+
+or an equivalent implementation compatible with the existing architecture.
+
+Maintain relationships with:
+
+* Patient
+* Caregiver
+* User
+
+Do not delete existing data.
+
+Do not reset the database just to make the feature work.
+
+---
+
+# REAL DATA — NO HARDCODED BEHAVIOR
+
+Search the existing project for hardcoded values related to:
+
+* patient login
+* caregiver login
+* patient assignment
+* progress
+* XP
+* rewards
+* assessment
+* dashboard
+* caregiver data
+
+Replace hardcoded behavior with real database-backed behavior where required.
+
+Seeded demo accounts may remain.
+
+But newly created accounts must use the real system.
+
+---
+
+# RESPONSIVE DESIGN
+
+All new/modified screens must work on:
+
+* small Android phones
+* standard Android phones
+* larger Android phones
+* Flutter Web
+
+No overflow.
+
+No clipping.
+
+No inaccessible buttons.
+
+No tiny text.
+
+No horizontal layout that breaks on small screens.
+
+---
+
+# ANDROID APK — CRITICAL
+
+DO NOT consider the work finished because:
+
+* Web works
+* localhost works
+* Flutter analyze passes
+* UI looks correct in Chrome
+
+The implementation MUST work in the actual Android APK.
+
+---
+
+# BUILD TEST
+
+Run:
+
+```bash
+cd "C:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile"
+
+flutter clean
+
+flutter pub get
+
+flutter analyze
+```
+
+Fix actual errors.
+
+Then:
+
+```bash
+flutter build apk --debug
+```
+
+Then:
+
+```bash
+flutter build apk --release
+```
+
+Expected release APK:
+
+```text
+C:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\build\app\outputs\flutter-apk\app-release.apk
+```
+
+---
+
+# ACTUAL APK TESTING
+
+Install the APK on an Android device/emulator.
+
+Actually test:
+
+## Registration
+
+* Create new patient account
+* Enter username/name
+* Enter password
+* Account is created
+
+## Login
+
+* Logout
+* Login using newly created account
+* Verify correct patient dashboard
+
+## Initial Assessment
+
+Verify:
+
+```text
+Create Account
+↓
+10 Questions Automatically
+↓
+Question 1
+↓
+...
+↓
+Question 10
+↓
+Thank You
+↓
+Home
+```
+
+## Assessment
+
+Verify:
+
+* correct stories
+* correct questions
+* correct character
+* correct age
+* correct location
+* correct image
+* language switching
+* audio
+* Yes/No
+* responses saved
+
+## Voice
+
+Verify:
+
+* TTS
+* story reading
+* question reading
+* option reading
+* tap feedback
+* Yes/No feedback
+* Play/Pause feedback
+
+Do NOT test voice commands as a requirement.
+
+The user should control the app by tapping.
+
+---
+
+# PROGRESS TEST
+
+Complete games.
+
+Verify progress actually changes.
+
+For example:
+
+```text
+2/4
+↓
+3/4
+↓
+4/4
+```
+
+Do not accept a fixed number.
+
+---
+
+# XP TEST
+
+Complete a reward-producing activity.
+
+Verify:
+
+```text
+XP before
+↓
+completion
+↓
+XP after
+```
+
+must actually increase.
+
+Restart the app and verify the XP remains.
+
+---
+
+# CAREGIVER TEST
+
+Create/login as caregiver.
+
+Verify:
+
+* correct caregiver profile
+* correct assigned patients
+* no hardcoded patient list
+* assessment responses appear
+* progress appears
+* XP/rewards appear
+* notes/tasks continue working
+
+Create a second caregiver if necessary to prove that caregiver data is dynamic.
+
+---
+
+# OFFLINE TEST
+
+Disable internet.
+
+Test:
+
+* game completion
+* progress
+* XP
+* assessment response where applicable
+
+Reconnect.
+
+Verify synchronization.
+
+---
+
+# LANGUAGE TEST
+
+Test:
+
+```text
+English
+Hindi
+Assamese
+```
+
+Verify:
+
+* header
+* buttons
+* assessment
+* stories
+* questions
+* voice feedback
+* navigation
+
+No overflow.
+
+---
+
+# TEST ALL EXISTING FEATURES AFTER CHANGES
+
+At minimum verify:
+
+* Patient login
+* Patient registration
+* Caregiver login
+* Caregiver dashboard
+* Patient dashboard
+* 18 games
+* Progress
+* XP/rewards
+* Mood
+* Reminders
+* Memory
+* Activities
+* NIA
+* Offline storage
+* Sync
+* Language switching
+* Assessment
+* Voice feedback
+* Logout
+* RBAC
+
+Do not fix one feature by breaking another.
+
+---
+
+# AUTOMATED TESTS
+
+Add/update tests for:
+
+1. Patient registration
+2. Patient login
+3. Caregiver authentication
+4. RBAC
+5. Patient assignment
+6. Initial assessment creation
+7. Assessment response saving
+8. Assessment completion
+9. Caregiver assessment retrieval
+10. Game completion
+11. Progress calculation
+12. XP calculation
+13. Duplicate reward prevention
+14. Offline queue
+15. Synchronization
+16. Language switching
+17. TTS initialization
+18. Android build
+
+---
+
+# FINAL ACCEPTANCE SCENARIO
+
+The implementation is only complete when this complete scenario works:
+
+```text
+1. Open the actual Android APK
+
+2. Create a new patient account
+
+3. Enter username/name + password
+
+4. Account is stored in the database
+
+5. Initial 10-question assessment automatically opens
+
+6. Question 1 follows the supplied screenshot/template
+
+7. Existing NEURAL NEXUS theme is preserved
+
+8. Story can be read visually
+
+9. Story can be played as audio
+
+10. App reads the story through TTS
+
+11. App reads the question through TTS
+
+12. App reads the Yes/No options
+
+13. User taps Yes or No
+
+14. App says what option the user selected
+
+15. User continues through Questions 1–10
+
+16. All responses are saved
+
+17. Thank You popup appears
+
+18. Assessment is associated with the correct patient
+
+19. Caregiver can see the actual responses
+
+20. Patient reaches Home automatically
+
+21. Patient plays a cognitive game
+
+22. GameSession is saved
+
+23. Progress changes dynamically
+
+24. XP changes dynamically
+
+25. Close the APK
+
+26. Reopen the APK
+
+27. Progress remains correct
+
+28. XP remains correct
+
+29. Assessment remains completed
+
+30. Login as caregiver
+
+31. Correct assigned patients appear
+
+32. New patient's assessment appears
+
+33. Disable internet
+
+34. Complete another game
+
+35. Offline data is saved
+
+36. Reconnect internet
+
+37. Data synchronizes
+
+38. Test English
+
+39. Test Hindi
+
+40. Test Assamese
+
+41. Test voice feedback
+
+42. Test small Android screen
+
+43. Verify no Flutter overflow
+
+44. Verify no broken navigation
+
+45. Verify no broken existing feature
+
+46. Build debug APK successfully
+
+47. Build release APK successfully
+```
+
+---
+
+# FINAL REPORT REQUIRED FROM ANTIGRAVITY
+
+After implementation, provide a concise report.
+
+## 1. Files changed
+
+List the important files created/modified.
+
+## 2. Backend
+
+Report changes to:
+
+* authentication
+* caregiver system
+* patient registration
+* assessment APIs
+* game completion
+* progress
+* XP
+* synchronization
+
+## 3. Flutter
+
+Report changes to:
+
+* responsive header
+* voice feedback
+* registration
+* assessment
+* progress
+* XP/rewards
+* caregiver/patient routing
+
+## 4. Database
+
+Report:
+
+* new models
+* modified models
+* migrations
+
+## 5. Tests
+
+Report actual results:
+
+```text
+Backend tests: PASS/FAIL
+Flutter analyze: PASS/FAIL
+Flutter Web build: PASS/FAIL
+Android debug APK: PASS/FAIL
+Android release APK: PASS/FAIL
+```
+
+## 6. APK
+
+Confirm the actual APK path:
+
+```text
+C:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\build\app\outputs\flutter-apk\app-release.apk
+```
+
+---
+
+# FINAL INSTRUCTION
+
+Do not tell me "implemented" simply because code was written.
+
+Do not tell me "working" simply because the browser works.
+
+The final objective is:
+
+**A REAL WORKING NEURAL NEXUS APPLICATION**
+
+with:
+
+**REAL USER REGISTRATION**
+
+* **REAL DATABASE AUTHENTICATION**
+
+* **DYNAMIC CAREGIVER ACCOUNTS**
+
+* **DYNAMIC PATIENT ASSIGNMENT**
+
+* **AUTOMATIC 10-QUESTION ONBOARDING**
+
+* **THE PROVIDED QUESTION CONTENT**
+
+* **THE PROVIDED IMAGE/TEMPLATE**
+
+* **EXISTING NEURAL NEXUS THEME**
+
+* **TAP-BASED VOICE FEEDBACK**
+
+* **REAL GAME PROGRESS**
+
+* **REAL XP/REWARDS**
+
+* **REAL CAREGIVER DATA**
+
+* **OFFLINE STORAGE**
+
+* **SYNC**
+
+* **EXISTING 18 GAMES**
+
+* **NIA**
+
+* **MULTILINGUAL SUPPORT**
+
+* **NO UI OVERFLOW**
+
+* **WORKING ANDROID APK**
+
+Build and verify the actual Android APK before declaring the implementation complete.
+## PROBLEM 2 — VOICE GUIDANCE / AUDIO FEEDBACK EVERYWHERE
+
+The voice feature should be designed primarily for **elderly users and users with visual difficulty**.
+
+### IMPORTANT CHANGE
+
+**DO NOT require the user to speak commands to control the application.**
+
+The user should interact with the app normally by **tapping buttons/options**.
+
+Whenever the user taps something, the app should **speak and explain what they selected or what is currently on the screen**.
+
+For example:
+
+* User taps **Games** → app says: **"Games. You have 18 cognitive games available."**
+* User taps **Progress** → app says: **"Progress. Your current progress is 75 percent."**
+* User taps **Memory Match** → app says: **"Memory Match. This game helps you practice memory."**
+* User taps **Yes** → app says: **"You selected Yes."**
+* User taps **No** → app says: **"You selected No."**
+* User taps **Next** → app says: **"Next question. Question 3 of 10."**
+* User taps **Play** → app says: **"Playing the story."**
+* User taps **Pause** → app says: **"Story paused."**
+* User taps **Rewards** → app says: **"Rewards. You currently have 120 XP."**
+* User taps **Back** → app says: **"Going back."**
+
+### Voice guidance should work throughout the app
+
+Provide spoken feedback/guidance for:
+
+* Login
+* Create Account
+* Home
+* Profile
+* All 18 games
+* Game instructions
+* Game options
+* Game results
+* Initial onboarding
+* 10-question assessment
+* YES/NO questions
+* Meaningful Activities
+* Rewards
+* XP
+* Badges
+* Streaks
+* Progress
+* Mood
+* Memory
+* Reminders
+* NIA
+* Settings
+* Language selection
+* Navigation buttons
+
+### Initial screen guidance
+
+When a screen opens, the app may automatically read the important content once.
+
+For example:
+
+> "Home page. Welcome, Anima. Your progress is 75 percent. You have 120 XP."
+
+Do not continuously speak every element automatically. Avoid overwhelming the user.
+
+### Tap-to-speak behavior
+
+Every important interactive element should have an accessible spoken label.
+
+When the user taps an element:
+
+1. Perform the normal action.
+2. Speak what the element is or what happened.
+3. Give the user enough information to understand the result.
+
+Example:
+
+```text
+User taps: Memory Match
+
+App:
+"Memory Match selected.
+This game helps you practice remembering matching pairs.
+Tap Start to begin."
+```
+
+### 10-question assessment
+
+For each assessment screen:
+
+When the question opens:
+
+> "Question 1 of 10."
+
+Then:
+
+> "I will read the story."
+
+Read the story.
+
+Then:
+
+> "Now I will read the question."
+
+Read the question.
+
+Then:
+
+> "Please choose an answer."
+
+When the answer buttons are displayed:
+
+> "Option 1: Yes."
+
+> "Option 2: No."
+
+The user simply **taps Yes or No**.
+
+If the user taps Yes:
+
+> "You selected Yes."
+
+If the user taps No:
+
+> "You selected No."
+
+If the user taps Next:
+
+> "Moving to Question 2 of 10."
+
+### Audio controls
+
+The user can tap:
+
+* Play
+* Pause
+* Replay
+* Volume
+
+The app should provide spoken feedback where useful:
+
+**Play:**
+
+> "Playing."
+
+**Pause:**
+
+> "Paused."
+
+**Replay:**
+
+> "Playing again."
+
+Do not require voice commands such as "Play", "Pause", "Next", "Yes", or "No".
+
+These are **tap actions**, not spoken commands.
+
+### Speech-to-text
+
+Do NOT make Speech-to-Text a required control mechanism for general app navigation.
+
+The primary interaction model is:
+
+**User taps → App responds with voice guidance.**
+
+Speech-to-text can remain available for appropriate existing features such as NIA if already implemented, but it should not be required for navigating the application.
+
+### Text-to-Speech
+
+Text-to-Speech is the main accessibility technology for this requirement.
+
+Use the user's selected language:
+
+* English
+* Hindi
+* Assamese
+
+The spoken language should correspond to the selected app language wherever the installed Android TTS engine supports it.
+
+### Important UX rule
+
+Do not make the app talk continuously.
+
+Use **short, clear, elderly-friendly spoken feedback**.
+
+The user should always be able to:
+
+* tap normally
+* read normally
+* listen to the app
+
+The voice feature should enhance accessibility without changing the existing app interaction model.
+
+### Android requirement
+
+This must work in the actual Android APK.
+
+Verify:
+
+* TTS initialization
+* Android TTS engine
+* language switching
+* spoken button labels
+* spoken question/story
+* spoken Yes/No selection
+* spoken navigation feedback
+* audio controls
+* no crashes when TTS is unavailable
+
+If TTS is unavailable, the application must continue working normally through touch and visual UI.
+
+Do not break the existing NIA voice functionality.
+
+### Theme requirement
+
+**DO NOT CHANGE THE EXISTING NEURAL NEXUS APP THEME.**
+
+The voice accessibility feature must use the existing app's:
+
+* colors
+* typography
+* buttons
+* cards
+* spacing
+* icons
+* branding
+* navigation style
+
+The supplied 10-question screenshot is a **layout/reference template only**.
+
+Adapt that template to the **existing NEURAL NEXUS visual theme** rather than replacing the entire application theme.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-19T17:20:37+05:30.
+
+The user's current state is as follows:
+Other open documents:
+- c:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\lib\screens\patient\caregiver_screen.dart (LANGUAGE_DART)
+- c:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\lib\screens\splash\splash_screen.dart (LANGUAGE_DART)
+- c:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\lib\services\sync_engine.dart (LANGUAGE_DART)
+- c:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\lib\database\database_helper.dart (LANGUAGE_DART)
+- c:\Users\Avay\OneDrive\Desktop\Ritasri app\mobile\lib\models\memory_item_model.dart (LANGUAGE_DART)
+</ADDITIONAL_METADATA>

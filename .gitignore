@@ -1,0 +1,45 @@
+# Node.js dependencies and generated output
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+
+# Python bytecode, virtual environments, and test caches
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Environment files and local credentials
+.env
+.env.*
+!.env.example
+
+# Local runtime databases and ML artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.pkl
+*.joblib
+
+# Flutter and Android generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.gradle/
+build/
+coverage/
+**/android/local.properties
+*.apk
+*.aab
+
+# Jupyter, IDE, OS, and logs
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db

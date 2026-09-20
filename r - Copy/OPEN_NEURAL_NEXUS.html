@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEURAL NEXUS — One-Click App Launcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --secondary: #10B981;
+      --bg: #F0FDF4;
+      --surface: #FFFFFF;
+      --text: #0F172A;
+      --muted: #64748B;
+      --border: #E2E8F0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, rgba(240, 253, 244, 1) 90%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .launcher-card {
+      background: var(--surface);
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+      max-width: 680px;
+      width: 100%;
+      padding: 40px;
+      border: 1px solid var(--border);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: #DBEAFE;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .actions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .app-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-radius: 18px;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1.5px solid var(--border);
+    }
+    .app-link.primary {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    }
+    .app-link.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.35);
+    }
+    .app-link.secondary {
+      background: #F8FAFC;
+      color: var(--text);
+    }
+    .app-link.secondary:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    .app-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .icon {
+      font-size: 30px;
+    }
+    .title {
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .desc {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+    .chevron {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .status-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.25);
+      margin-left: 8px;
+    }
+    .credentials {
+      background: #F8FAFC;
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+    }
+    .credentials strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="launcher-card">
+    <div class="header">
+      <div class="badge">Localhost Launcher</div>
+      <h1>Neural Nexus Platform</h1>
+      <p class="subtitle">Select the application screen or interface you wish to access</p>
+    </div>
+
+    <div class="actions-grid">
+      <!-- 1. Patient App -->
+      <a href="http://localhost:8080" target="_blank" class="app-link primary">
+        <div class="app-info">
+          <span class="icon">🧠</span>
+          <div>
+            <div class="title">Patient Cognitive App <span class="status-pill">:8080</span></div>
+            <div class="desc">Splash, PIN Login (Ifra / Taiba), 18 Games, Reminders & Nia Voice</div>
+          </div>
+        </div>
+        <span class="chevron">→</span>
+      </a>
+
+      <!-- 2. Caregiver & Doctor Dashboard -->
+      <a href="http://localhost:5173" target="_blank" class="app-link secondary">
+        <div class="app-info">
+          <span class="icon">🩺</span>
+          <div>
+            <div class="title" style="color: #0F172A;">Caregiver & Doctor Web Portal <span class="status-pill" style="background:#E2E8F0; color:#334155;">:5173</span></div>
+            <div class="desc" style="color: #64748B;">Patient Monitoring, Cognitive Trends & Analytics</div>
+          </div>
+        </div>
+        <span class="chevron" style="color: #64748B;">→</span>
+      </a>
+
+      <!-- 3. FastAPI Swagger Docs -->
+      <a href="http://127.0.0.1:8000/docs" target="_blank" class="app-link secondary">
+        <div class="app-info">
+          <span class="icon">⚡</span>
+          <div>
+            <div class="title" style="color: #0F172A;">FastAPI Backend & Interactive Docs <span class="status-pill" style="background:#DCFCE7; color:#166534;">:8000</span></div>
+            <div class="desc" style="color: #64748B;">Offline Sync Engine, Adaptive AI endpoints, REST API</div>
+          </div>
+        </div>
+        <span class="chevron" style="color: #64748B;">→</span>
+      </a>
+    </div>
+
+    <div class="credentials">
+      <strong>Demo Accounts:</strong><br>
+      • Patient PIN Login: Select <strong>Ifra</strong> or <strong>Taiba</strong> &rarr; PIN: <code>1234</code><br>
+      • Caregiver Portal: <code>dr.ritasri@neuralnexus.health</code> (or any caregiver email)
+    </div>
+  </div>
+</body>
+</html>
