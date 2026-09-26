@@ -26,19 +26,23 @@ if %ERRORLEVEL% equ 0 (
 :: STEP 2 & 3: Check whether production web build exists
 :: -------------------------------------------------------------
 echo.
-echo [2/3] Checking Patient Web Build (mobile\build\web\index.html)...
-if not exist "mobile\build\web\index.html" (
+echo [2/3] Checking Patient Web Build (mobi\build\web or mobile\build\web)...
+set "PATIENT_WEB_DIR="
+if exist "%~dp0mobi\build\web\index.html" set "PATIENT_WEB_DIR=%~dp0mobi\build\web"
+if exist "%~dp0mobile\build\web\index.html" set "PATIENT_WEB_DIR=%~dp0mobile\build\web"
+
+if "%PATIENT_WEB_DIR%"=="" (
     color 0C
     echo.
     echo ===============================================================
     echo [!] PATIENT WEB BUILD NOT FOUND
     echo ===============================================================
     echo The compiled production web app was not found in:
-    echo     mobile\build\web\index.html
+    echo     mobi\build\web\index.html or mobile\build\web\index.html
     echo.
     echo To generate the production web build:
     echo.
-    echo     cd mobile
+    echo     cd mobi
     echo     flutter build web --release
     echo.
     echo Once built, this launcher will start instantly without Flutter!
@@ -47,7 +51,7 @@ if not exist "mobile\build\web\index.html" (
     pause
     exit /b 1
 )
-echo       Production web build found. Flutter runtime NOT required!
+echo       Production web build found at %PATIENT_WEB_DIR%. Flutter runtime NOT required!
 
 :: -------------------------------------------------------------
 :: STEP 4: Resolve Port 8080 & Process Conflicts
@@ -96,7 +100,7 @@ echo.
 start "" "http://localhost:%APP_PORT%"
 
 :: Serve compiled production bundle with lightweight Python HTTP server
-python -m http.server %APP_PORT% --directory "%~dp0mobile\build\web"
+python -m http.server %APP_PORT% --directory "%PATIENT_WEB_DIR%"
 
 if %ERRORLEVEL% neq 0 (
     color 0C

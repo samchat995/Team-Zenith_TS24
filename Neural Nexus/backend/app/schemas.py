@@ -3,7 +3,7 @@ Pydantic validation schemas for Neural Nexus backend.
 """
 from datetime import datetime
 from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, EmailStr, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict
 
 
 # Auth Schemas
