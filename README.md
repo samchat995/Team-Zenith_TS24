@@ -25,18 +25,82 @@ Built for the multi-cultural context of India's North Eastern Region (NER), Neur
 
 ---
 
-## 2. System Architecture
+## 2. Product Workflow
+
+```mermaid
+flowchart TD
+    A[1. Account Creation<br/>User creates account with basic details] --> B[2. User Login]
+    B --> C1
+
+    subgraph Day1["Day 1 — Fixed Story-Based Assessment (Compulsory)"]
+        C1[10 Story Questions<br/>Personal life, family, preferences,<br/>favourite things, routine, etc.]
+        C1 --> C2{User Response}
+        C2 -->|Answer| C3[Continue]
+        C2 -->|Skip — no penalty| C3
+        C3 --> C4[After 10 Questions<br/>No more questions this day]
+    end
+
+    C4 --> D[Play Games<br/>2-3 games]
+    D --> E[Popup: Your reward is ready]
+    E --> F[Go to Reward Section<br/>1-2 questions only]
+    F --> G[Get Reward<br/>Reward is given and displayed]
+    G --> H[Home — Next step]
+
+    H --> I
+
+    subgraph Daily["Daily Flow — Day 2 Onwards"]
+        I[User Logs In] --> J[Popup: Your reward is ready — Daily]
+        J --> K[Go to Reward Section<br/>1-2 questions only]
+        K --> L[Get Reward]
+        L --> M[Home — Choose any section]
+        M --> N[Games<br/>Play cognitive games, 1+]
+        M --> O[Activities<br/>Gardening, music, painting, stories]
+        M --> P[Reward Section<br/>1-2 questions to reward]
+
+        N --> Q[Data Recording<br/>Game performance, activity choices,<br/>question answers, behaviour & engagement]
+        O --> Q
+        Q --> R[AI Analysis<br/>Analyse data, build user profile,<br/>track progress & preferences]
+        R --> S[Updated Patient Profile<br/>Interests, preferences, routine,<br/>familiar themes, others]
+        S --> T[After 3-4 Days<br/>Caregiver Assigned, based on collected data]
+    end
+
+    T --> U
+
+    subgraph CaregiverFlow["Caregiver Dashboard & Recommendation Flow — no phone call; review and decision happen entirely on the dashboard"]
+        U[View All Data<br/>Answers, game performance,<br/>activity choices, behaviour] --> V[AI Recommendation<br/>Suggested activities & games]
+        V --> W[Caregiver Review<br/>Verify and modify as needed]
+        W --> X[Approve / Modify / Reject<br/>Final recommendation]
+        X --> Y[Update Plan<br/>Personalized activities & games for user]
+    end
+
+    Y --> Z
+
+    subgraph Cycle["Continuous Cycle"]
+        Z[User Plays<br/>Games / Activities] --> Z2[Data Collected]
+        Z2 --> Z3[AI Updates Profile & Recommendation]
+        Z3 --> Z4[Caregiver Reviews & Updates Plan]
+        Z4 --> Z5[User Gets Personalized Experience]
+        Z5 -.->|Repeat Daily| Z
+    end
+```
+
+All 10 story questions are asked together on Day 1, not spread one-per-day across 10 days.
+Caregiver review happens entirely through the dashboard — there is no phone call step.
+
+---
+
+## 3. System Architecture
 
 ```mermaid
 flowchart TD
     subgraph Mobile["Flutter Android Mobile / Tablet (Elderly Patient)"]
-        Splash[2-Sec Splash Animation] --> Login[Patient PIN Login: Ifra / Taiba]
+        Splash[2-Sec Splash Animation] --> Login[Patient PIN Login<br/>Demo accounts: Aarav / Diya / Kabir]
         Login --> Dashboard[Elderly Patient Dashboard]
         Dashboard --> Games[18 Complete Playable Cognitive Games]
         Dashboard --> Voice[Nia Voice Assistant]
         Dashboard --> Reminders[Interactive Reminders: Meds, Water, Routine]
         Dashboard --> Mood[Daily Mood Check-in: 5 Calming States]
-        Dashboard --> Memory[My Memory - Personalized Photo Album]
+        Dashboard --> Memory[My Memory — Personalized Photo Album]
         Games --> LocalDB[(SQLite Local DB)]
         Reminders --> LocalDB
         Mood --> LocalDB
@@ -56,16 +120,13 @@ flowchart TD
     end
 
     subgraph WebPortal["Web Dashboards (React + Vite)"]
-        CaregiverDash[Caregiver Dashboard: Patient List, Reminders, Mood, Notes]
-        HealthcareDash[Healthcare Worker Dashboard - Dr. Ritasri: Clinical Observations, Cognitive Domains]
+        CaregiverDash[Caregiver Dashboard<br/>Patient List, Reminders, Mood, Notes,<br/>AI Recommendations, Approve/Modify/Reject]
         AdminDash[Admin Dashboard: User Roster, Security Logs]
     end
 
     SyncEngine <-->|REST API / HTTPS| Gateway
     WebPortal <-->|REST API / JWT| Gateway
 ```
-
----
 
 ## 3. Repository Structure
 
@@ -102,14 +163,11 @@ Team-Zenith_TS24/
 
 | Role | Username / Email | PIN / Password | Description |
 | :--- | :--- | :--- | :--- |
-| **Patient 1** | `Ifra` | PIN: `1234` | Patient profile with 2 completed games, 2 pending reminders, calm mood |
-| **Patient 2** | `Taiba` | PIN: `1234` | Patient profile with isolated history, routine game, Hindi language |
-| **Healthcare Worker** | `ritasri@neuralnexus.demo` | `Doctor@123` | Dr. Ritasri: Clinical observations, cognitive domain breakdown, reports |
+| **Patient 1** | `Aarav` | PIN: `1234` | Patient profile with 2 completed games, 2 pending reminders, calm mood |
+| **Patient 2** | `Aaita` | PIN: `1234` | Patient profile with isolated history, routine game, Hindi language |
 | **Caregiver** | `caregiver@neuralnexus.demo` | `Caregiver@123` | Ananya Sharma: Patient tracker, reminders manager, My Memory album |
-| **System Admin** | `admin@neuralnexus.demo` | `Admin@123` | System administrator: User roster, security audit log inspector |
 
 ---
-
 ## 5. Complete Cognitive Game Library (18 Playable Games)
 
 1. **Remember the Objects** (`memory`): Memorize 3–5 everyday objects for 6 seconds, hide, and select which items were shown.
